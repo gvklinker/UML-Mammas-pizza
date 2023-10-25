@@ -34,5 +34,10 @@ namespace UML_Mammas_pizza
         public string Phone { get { return _phone; } }
         public string Adress { get { return $"{_street} {_streetNum}, {_city} {_zip}"; } }
 
+        public override string ToString()
+        {
+            return $"Uesr: {_userName}, Name: {_name}, E-mail: {_email}, Phone number: {_phone}, Adress: {Adress}";
+        }
+
     }
 }

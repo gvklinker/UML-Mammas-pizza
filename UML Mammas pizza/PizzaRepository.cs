@@ -35,5 +35,28 @@ namespace UML_Mammas_pizza
             _pizzas[piz.Number] = piz;
             
         }
+
+        public void PrintPiz()
+        {
+            foreach (var item in _pizzas)
+            {
+                Console.WriteLine(item.Value.ToString());
+            }
+        }
+
+        public void Setup()
+        {
+            List<Topping> toppings1 = new List<Topping> { new Topping("Tomato", 0, true), new Topping("Cheese", 4, true), new Topping("Ham", 7, false), new Topping("Mushroom", 5, true) };
+            List<Topping> toppings2 = new List<Topping> { new Topping("Tomato", 0, true), new Topping("Cheese", 4, true), new Topping("Mussels", 10, false), new Topping("Shrimp", 9, false), new Topping("Garlic", 4, true) };
+            List<Topping> toppings3 = new List<Topping> { new Topping("Tomato", 0, true), new Topping("Cheese", 4, true), new Topping("Onion", 5, true), new Topping("Meat sauce", 10, false) };
+
+            Pizza piz1 = new Pizza(toppings1, "3", "Capricossa", 8);
+            Pizza piz2 = new Pizza(toppings2, "6", "Marinara", 85);
+            Pizza piz3 = new Pizza(toppings3, "8", "Italiana", 75);
+
+            _pizzas.Add(piz1.Number, piz1);
+            _pizzas.Add(piz2.Number, piz2);
+            _pizzas.Add(piz3.Number, piz3);
+        }
     }
 }
