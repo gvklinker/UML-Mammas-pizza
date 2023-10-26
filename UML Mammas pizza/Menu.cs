@@ -96,10 +96,12 @@ namespace UML_Mammas_pizza
         }
         private void UpdateCus() {
             Console.WriteLine("You are trying to update a users info");
+            Console.WriteLine("Which user are you trying to change");
             string username = GetUsername();
+            Console.WriteLine("What are you changing it into?");
             Customer cus = CreateCustomer();
+            Console.WriteLine(cusRepo.FindCustomer(username).ToString());
             cusRepo.UpdateCustomer(username, cus);
-            Console.WriteLine(cus.ToString());
             Console.WriteLine("Has been changed to:");
             Console.WriteLine(cusRepo.FindCustomer(username).ToString());
         }
@@ -107,7 +109,14 @@ namespace UML_Mammas_pizza
             Console.WriteLine("Displaying all users");
             cusRepo.PrintCustomers();
         }
-        private void AddPiz() {  } 
+        private void AddPiz() {
+            Console.WriteLine("You are trying to create a new pizza");
+            Pizza newPiz = CreatePizza();
+            if (pizRepo.AddPizza(newPiz))
+                Console.WriteLine($"Pizza {newPiz.Number} {newPiz.Name} has been added to the repository");
+            else 
+                Console.WriteLine($"{newPiz.Number} already exist in the system or something else went wrong");
+        } 
         private void RemovePiz() {
             Console.WriteLine("You are trying to delete a pizza");
             string num = GetThatNumber();
@@ -116,7 +125,15 @@ namespace UML_Mammas_pizza
             else
                 Console.WriteLine($"{num} is not in the system, so it can't be deleted");
         }
-        private void UpdatePiz() { }
+        private void UpdatePiz() {
+            Console.WriteLine("You are trying to update a pizza");
+            Pizza newPiz = CreatePizza();
+            Console.WriteLine("You are chaniging an existing pizza");
+            string num = GetThatNumber();
+            Console.WriteLine($"{pizRepo.FindPizza(num)}");
+            pizRepo.UpdatePizza(num, newPiz);
+            Console.WriteLine($"has been changed to {pizRepo.FindPizza(num)}");
+        }
         private void DisplayPiz() {
             pizRepo.PrintPiz();
         }
@@ -156,8 +173,7 @@ namespace UML_Mammas_pizza
             return new Customer(username, name, email, phone, city, zip, street, num);
         }
 
-        private Pizza CreatePizza()
-        {
+        private Pizza CreatePizza(){
             List<Topping> toppings = new List<Topping>() { new Topping("Cheese", 0, true), new Topping("Tomato", 0, true)};
             string num = GetThatNumber();
             Console.WriteLine("What is this pizza going to be called?");
@@ -166,23 +182,45 @@ namespace UML_Mammas_pizza
             int price = int.Parse(Console.ReadLine());
             Console.WriteLine("What should be on this pizza?");
             int choice = PickTopping();
-            while (choice != 0)
-            {
+            while (choice != 0){
                 switch (choice)
                 {
                     case 1:
                         toppings.Add(new Topping("Ham", 7, false)); break;
                     case 2:
                         toppings.Add(new Topping("Mushroom", 5, true)); break;
-                    default: Console.WriteLine(""); break;
+                    case 3:
+                        toppings.Add(new Topping("Pepperoni", 7, false)); break;
+                    case 4:
+                        toppings.Add(new Topping("Olives", 5, true)); break;
+                    case 5:
+                        toppings.Add(new Topping("Shrimp", 9, false)); break;
+                    case 6:
+                        toppings.Add(new Topping("Pineapple", 5, true)); break;
+                    case 7:
+                        toppings.Add(new Topping("Peppers", 5, true)); break;
+                    case 8:
+                        toppings.Add(new Topping("Bacon", 7, false)); break;
+                    case 9:
+                        toppings.Add(new Topping("Onion", 5, true)); break;
+                    case 10:
+                        toppings.Add(new Topping("Egg", 7, true)); break;
+                    default: ErrorMessage(); break;
+
                 }
+                choice = PickTopping();
             }
             return new Pizza(toppings, num, name, price);
         }
 
         private int PickTopping()
         {
-            return ReadUserChoice();
+            Console.WriteLine("\t Pick a topping");
+            Console.WriteLine("\t1. Ham \n\t2.Mushroom \n\t3.Pepperoni \n\t4.Olives \n\t5.Shrimp \n\t6.Pineapple \n\t7.Pepeprs \n\t8.Bacon \n\t9.Onion \n\t10.Egg");
+            Console.WriteLine("Enter 0 to finsih adding toppings");
+            int choice = ReadUserChoice();
+            Console.Clear();
+            return choice;
         }
     }
 }
