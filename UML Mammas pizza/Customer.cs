@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UML_Mammas_pizza
 {
-    class Customer
+    public class Customer
     {
         private string _userName;
         private string _name;
@@ -33,6 +33,11 @@ namespace UML_Mammas_pizza
         public string Email { get { return _email; } }
         public string Phone { get { return _phone; } }
         public string Adress { get { return $"{_street} {_streetNum}, {_city} {_zip}"; } }
+
+        public override string ToString()
+        {
+            return $"Uesr: {_userName}, Name: {_name}, E-mail: {_email}, Phone number: {_phone}, Adress: {Adress}";
+        }
 
     }
 }

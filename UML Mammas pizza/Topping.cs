@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace UML_Mammas_pizza
 {
+    //public enum TopName{Tomat, Ost, Skinke, Pepperoni, Rejer, Paprika, Ananas, Oliven, Champignon, Kødsovs}
     class Topping
     {
         public string Name { get; set; }
