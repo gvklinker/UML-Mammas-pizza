@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UML_Mammas_pizza
 {
-    class Customer
+    public class Customer
     {
         private string _userName;
         private string _name;

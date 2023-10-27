@@ -126,10 +126,10 @@ namespace UML_Mammas_pizza
                 Console.WriteLine($"{num} is not in the system, so it can't be deleted");
         }
         private void UpdatePiz() {
-            Console.WriteLine("You are trying to update a pizza");
-            Pizza newPiz = CreatePizza();
             Console.WriteLine("You are chaniging an existing pizza");
             string num = GetThatNumber();
+            Console.WriteLine("You are trying to update a pizza");
+            Pizza newPiz = CreatePizza();
             Console.WriteLine($"{pizRepo.FindPizza(num)}");
             pizRepo.UpdatePizza(num, newPiz);
             Console.WriteLine($"has been changed to {pizRepo.FindPizza(num)}");

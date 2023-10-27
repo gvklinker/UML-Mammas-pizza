@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UML_Mammas_pizza
 {
-    class CustomerRepository
+    public class CustomerRepository
     {
 
         private Dictionary<string, Customer> _customers;

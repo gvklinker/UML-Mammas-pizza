@@ -32,7 +32,7 @@ namespace UML_Mammas_pizza
             //if (!_pizzas.Remove(id))
             //    return false;
             //return _pizzas.TryAdd(piz.Number, piz);
-            _pizzas[piz.Number] = piz;
+            _pizzas[id] = piz;
             
         }
 

@@ -5,7 +5,7 @@ namespace UnitTest
     [TestClass]
     public class CusRepoTest
     {
-        //CustomerRepository _customerRepository;
+        CustomerRepository _customerRepository;
         [TestMethod]
         public void TestAddCustomer()
         {
